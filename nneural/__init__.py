@@ -163,9 +163,7 @@ class NNeural:
             assert(isinstance(nneuron_list[i], NNeural)), "Each item need be a NNeuron object"
             listNames.append("Potência estimada {}".format(nneuron_list[i].getName()))
             y_pred = nneuron_list[i].predict(x_test)
-            #plt.plot(y_pred[:,0], lw=1, color = plt.cm.get_cmap("hsv", i))
             plt.plot(y_pred[:,0], lw=1, color = next(cyrow))
-        #plt.plot(y_test[:,0], lw=1, color = plt.cm.get_cmap("hsv", len(nneuron_list)))
         plt.plot(y_test[:,0], lw=1, color = next(cyrow))
         listNames.append("Potência real")
         plt.grid(True)
@@ -193,6 +191,3 @@ class NNeural:
         for i in range(len(listOfResults)):
             print ("Metrics {}: {}".format(nneuron_list[i].getName(), listOfResults[i]))
         
-
-
-
