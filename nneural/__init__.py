@@ -41,6 +41,7 @@ class NNeural:
     def setQtdInputs(self, qtd_inputs):
         assert (isinstance(qtd_inputs, int)), "This method need a integer as the number of inputs"
         self.__qtd_inputs = qtd_inputs
+        self.resetModel()
 
     def getQtdInputs(self):
         return self.__qtd_inputs
@@ -48,6 +49,7 @@ class NNeural:
     def setQtdOutputs(self, qtd_outputs):
         assert (isinstance(qtd_outputs, int)), "This method need a integer as the number of outputs"
         self.__qtd_outputs = qtd_outputs
+        self.resetModel()
 
     def getQtdOutputs(self):
         return self.__qtd_outputs
@@ -55,6 +57,7 @@ class NNeural:
     def setQtdHidenLayers(self, qtd_hiden_layers):
         assert (isinstance(qtd_hiden_layers, int)), "This method need a integer as the number of hiden layers"
         self.__qtd_hiden_layers = qtd_hiden_layers
+        self.resetModel()
 
     def getQtdHidenLayers(self):
         return self.__qtd_hiden_layers
@@ -62,36 +65,42 @@ class NNeural:
     def setQtdNeuronsHidenLayers(self, qtd_neurons_hiden_layers):
         assert (isinstance(qtd_neurons_hiden_layers, int)), "This method need a integer as the number of neurons in hiden layers"
         self.__qtd_neurons_hiden_layers = qtd_neurons_hiden_layers
+        self.resetModel()
 
     def getQtdNeuronsHidenLayers(self):
         return self.__qtd_neurons_hiden_layers
 
     def setActivation(self, activation):
         self.__activation = activation
+        self.resetModel()
 
     def getActivation(self):
         return self.__activation
 
     def setOptimizer(self, optimizer):
         self.__optimizer = optimizer
+        self.resetModel()
 
     def getOptimizer(self):
         return self.__optimizer
 
     def setLoss(self, loss):
         self.__loss = loss
+        self.resetModel()
 
     def getLoss(self):
         return self.__loss
 
     def setMetrics(self, metrics):
         self.__metrics = metrics
+        self.resetModel()
 
     def getMetrics(self):
         return self.__metrics
 
     def setActivationFinalLayer(self, activation_final_layer):
         self.__activation_final_layer = activation_final_layer
+        self.resetModel()
 
     def getActivationFinalLayer(self):
         return self.__activation_final_layer
@@ -99,6 +108,7 @@ class NNeural:
     def setVerbosity(self, verbosity):
         assert(isinstance(verbosity, bool)), "Verbosity need a boolean value"
         self.__verbosity = verbosity 
+        self.resetModel()
 
     def getVerbosity(self):
         return self.__verbosity
@@ -129,6 +139,9 @@ class NNeural:
         if self.__model == None:
             self.__createModel()
         return self.__model
+
+    def resetModel(self):
+        self.__model = None
 
     def train(self, x_train, y_train, epochs=10000):
         self.getModel().fit(x_train, y_train, epochs=epochs)
