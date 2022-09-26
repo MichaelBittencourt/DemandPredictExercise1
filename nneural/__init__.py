@@ -32,35 +32,35 @@ class NNeural:
         self.__model = None
 
     def setName(self, name):
-        assert (isinstance(name, str))
+        assert (isinstance(name, str)), "This method need a String as the name of NNeural"
         self.__name = name
 
     def getName(self):
         return self.__name
 
     def setQtdInputs(self, qtd_inputs):
-        assert (isinstance(qtd_inputs, int))
+        assert (isinstance(qtd_inputs, int)), "This method need a integer as the number of inputs"
         self.__qtd_inputs = qtd_inputs
 
     def getQtdInputs(self):
         return self.__qtd_inputs
 
     def setQtdOutputs(self, qtd_outputs):
-        assert (isinstance(qtd_outputs, int))
+        assert (isinstance(qtd_outputs, int)), "This method need a integer as the number of outputs"
         self.__qtd_outputs = qtd_outputs
 
     def getQtdOutputs(self):
         return self.__qtd_outputs
 
     def setQtdHidenLayers(self, qtd_hiden_layers):
-        assert (isinstance(qtd_hiden_layers, int))
+        assert (isinstance(qtd_hiden_layers, int)), "This method need a integer as the number of hiden layers"
         self.__qtd_hiden_layers = qtd_hiden_layers
 
     def getQtdHidenLayers(self):
         return self.__qtd_hiden_layers
 
     def setQtdNeuronsHidenLayers(self, qtd_neurons_hiden_layers):
-        assert (isinstance(qtd_neurons_hiden_layers, int))
+        assert (isinstance(qtd_neurons_hiden_layers, int)), "This method need a integer as the number of neurons in hiden layers"
         self.__qtd_neurons_hiden_layers = qtd_neurons_hiden_layers
 
     def getQtdNeuronsHidenLayers(self):
@@ -97,7 +97,7 @@ class NNeural:
         return self.__activation_final_layer
 
     def setVerbosity(self, verbosity):
-        assert(isinstance(verbosity, bool))
+        assert(isinstance(verbosity, bool)), "Verbosity need a boolean value"
         self.__verbosity = verbosity 
 
     def getVerbosity(self):
