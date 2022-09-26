@@ -22,7 +22,7 @@ nnModelTanh = NNeural("TanH", activation="tanh", metrics = metrics, verbosity=Tr
 modelList = [nnModelSigmoid, nnModelRelu, nnModelTanh]
 
 for model in modelList:
-    model.train(x_train, y_train, epochs
+    model.train(x_train, y_train, epochs)
 
 print("Calling method to evaluate_models")
 NNeural.evaluate_models(modelList, x_test, y_test)
