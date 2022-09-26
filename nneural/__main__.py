@@ -13,7 +13,7 @@ x_test = data[216:308,0:5]
 y_test = data[216:308, 5:7]
 
 metrics = ['mean_squared_error', "mean_absolute_error", "mape"]
-epochs = 1
+epochs = 500
 
 nnModelSigmoid = NNeural("Sigmoid", metrics = metrics, verbosity=True)
 nnModelRelu = NNeural("Relu", activation="relu", metrics = metrics, verbosity=True)
@@ -23,6 +23,8 @@ modelList = [nnModelSigmoid, nnModelRelu, nnModelTanh]
 
 for model in modelList:
     model.train(x_train, y_train, epochs)
+
+NNeural.plot(modelList, x_test, y_test, True)
 
 print("Calling method to evaluate_models")
 NNeural.evaluate_models(modelList, x_test, y_test)

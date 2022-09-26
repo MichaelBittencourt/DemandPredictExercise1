@@ -153,7 +153,7 @@ class NNeural:
         return self.getModel().predict(x_test)
 
     @staticmethod
-    def plot(nneuron_list, x_test, y_test):
+    def plot(nneuron_list, x_test, y_test, show=False):
         assert(isinstance(nneuron_list, list)), "You need set a list of NNeuron" 
         plt.figure(figsize=(10,8), dpi=110)
         listNames = []
@@ -173,6 +173,8 @@ class NNeural:
         plt.xlabel('Semana')
         plt.ylabel('Potência')
         plt.legend(listNames)
+        if show:
+            plt.show()
 
     @staticmethod
     def evaluate_models(nneuron_list, x_test, y_test):
