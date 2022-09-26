@@ -188,8 +188,8 @@ class NNeural:
             listOfResults.append(model.evaluate(x_test, y_test))
 
         print("Metrics head: [loss, " + ", ".join(metrics) + "]")
-        for result in listOfResults:
-            print ("Metrics result: {}".format(result))
+        for i in range(len(listOfResults)):
+            print ("Metrics {}: {}".format(nneuron_list[i].getName(), listOfResults[i]))
         
 
 
