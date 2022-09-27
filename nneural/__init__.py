@@ -18,6 +18,18 @@ class NNeural:
                  metrics = ['mean_squared_error'],
                  activation_final_layer = None,
                  verbosity = False):
+        self.__name = None
+        self.__qtd_inputs = None
+        self.__qtd_outputs = None
+        self.__qtd_hiden_layers = None
+        self.__qtd_neurons_hiden_layers = None
+        self.__activation = None
+        self.__optimizer = None
+        self.__loss = None
+        self.__metrics = None
+        self.__activation_final_layer = None
+        self.__verbosity = None
+        self.__model = None
         self.setName(name)
         self.setQtdInputs(qtd_inputs)
         self.setQtdOutputs(qtd_outputs)
@@ -29,7 +41,6 @@ class NNeural:
         self.setMetrics(metrics)
         self.setActivationFinalLayer(activation_final_layer if activation_final_layer != None else activation)
         self.setVerbosity(verbosity)
-        self.__model = None
 
     def setName(self, name):
         assert (isinstance(name, str)), "This method need a String as the name of NNeural"
@@ -118,6 +129,7 @@ class NNeural:
             print(text)
 
     def __createModel(self):
+        self.__print("Creating model...")
         layers = tf.keras.layers
         self.__print("Add Input layer with {} inputs".format(self.getQtdInputs()))
         self.__print("Activation function: {}".format(self.getActivation()))
@@ -136,20 +148,25 @@ class NNeural:
         self.__model = model
  
     def getModel(self):
+        self.__print("Gettings model. Now it is: {}".format(self.__model))
         if self.__model == None:
             self.__createModel()
         return self.__model
 
     def resetModel(self):
+        self.__print("Reset Model")
         self.__model = None
 
     def train(self, x_train, y_train, epochs=10000):
+        self.__print("Start training...")
         self.getModel().fit(x_train, y_train, epochs=epochs)
 
     def evaluate(self, x_test, y_test):
+        self.__print("Evaluating model on a test set")
         return self.getModel().evaluate(x_test, y_test)
 
     def predict(self, x_test):
+        self.__print("Starting prediction of a test set")
         return self.getModel().predict(x_test)
 
     @staticmethod
